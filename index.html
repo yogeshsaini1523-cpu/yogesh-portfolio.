@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yogesh Saini - Final-year B.Tech VLSI student portfolio">
+  <title>Yogesh Saini | VLSI Portfolio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #172033;
+      background: #f6f8fc;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #e5e9f2;
+      backdrop-filter: blur(10px);
+    }
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { font-size: 24px; font-weight: 800; }
+    .logo span { color: #315efb; }
+    nav ul { list-style: none; display: flex; gap: 24px; flex-wrap: wrap; }
+    nav a { font-weight: 600; color: #4b5568; }
+    nav a:hover { color: #315efb; }
+
+    .hero {
+      padding: 90px 0 70px;
+      background: linear-gradient(135deg, #eef3ff, #ffffff 55%, #eefaf8);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      align-items: center;
+      gap: 55px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: #e4ebff;
+      color: #315efb;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(42px, 7vw, 72px); line-height: 1.05; margin-bottom: 18px; }
+    h1 span { color: #315efb; }
+    .hero h2 { font-size: 23px; margin-bottom: 14px; color: #334155; }
+    .hero p { max-width: 720px; color: #5c6678; font-size: 18px; }
+    .buttons { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 12px 19px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid #315efb;
+      transition: .2s;
+    }
+    .btn.primary { background: #315efb; color: white; }
+    .btn.secondary { background: white; color: #315efb; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(49,94,251,.15); }
+
+    .photo-wrap { display: flex; justify-content: center; }
+    .photo {
+      width: 310px;
+      height: 380px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 28px;
+      border: 8px solid white;
+      box-shadow: 0 22px 60px rgba(26,40,70,.18);
+      background: #ddd;
+    }
+
+    section { padding: 78px 0; }
+    .section-title { text-align: center; margin-bottom: 42px; }
+    .section-title h2 { font-size: 36px; margin-bottom: 8px; }
+    .section-title p { color: #697386; }
+
+    .about-card, .card {
+      background: white;
+      border: 1px solid #e5e9f2;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 8px 28px rgba(30,45,80,.05);
+    }
+    .about-card p { color: #566174; font-size: 17px; }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .skill h3 { margin-bottom: 10px; color: #315efb; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      background: #f0f4ff;
+      border: 1px solid #dce5ff;
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .timeline { display: grid; gap: 18px; max-width: 900px; margin: auto; }
+    .timeline .card { border-left: 5px solid #315efb; }
+    .meta { color: #315efb; font-weight: 700; font-size: 14px; margin: 5px 0 8px; }
+    .card p { color: #5c6678; }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .project h3 { margin-bottom: 7px; }
+    .project .tools { color: #315efb; font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+    .project ul { padding-left: 20px; color: #5c6678; }
+
+    .edu-grid, .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .edu-card h3 { margin-bottom: 8px; }
+    .edu-card p, .cert-card p { color: #5c6678; }
+    .cert-grid { grid-template-columns: repeat(2, 1fr); }
+    .cert-card { position: relative; padding-left: 48px; }
+    .cert-card::before {
+      content: "✓";
+      position: absolute;
+      left: 18px;
+      top: 24px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #e4ebff;
+      color: #315efb;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .contact {
+      background: #111827;
+      color: white;
+    }
+    .contact .section-title p { color: #b8c1d1; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .contact-card {
+      background: #1b2434;
+      border: 1px solid #2d3748;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .contact-card small { color: #9eabc0; display: block; margin-bottom: 4px; }
+    .contact-card a { color: #dbe5ff; word-break: break-word; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #0b1220;
+      color: #9eabc0;
+      font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid, .skills, .projects, .edu-grid, .contact-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .photo { width: 260px; height: 320px; }
+      nav { flex-direction: column; padding: 14px 0; }
+      nav ul { justify-content: center; gap: 14px; }
+      .hero { padding-top: 55px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#home">Yogesh<span>.</span></a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="tag">VLSI • RTL Design • Verification</div>
+        <h1>Hi, I'm <span>Yogesh Saini</span></h1>
+        <h2>Final-year B.Tech Student in VLSI Design Technology</h2>
+        <p>
+          Passionate about Digital Electronics, RTL Design, FPGA implementation,
+          Verilog HDL and frontend VLSI verification.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="photo-wrap">
+        <img class="photo" src="profile.jpg" alt="Yogesh Saini profile photo">
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>My academic and technical profile</p>
+      </div>
+      <div class="about-card">
+        <p>
+          As a Final-year B.Tech student in VLSI Design Technology at BK Birla Institute
+          of Engineering Technology, Pilani, I have a strong foundation in Digital
+          Electronics, VLSI Design, Verilog HDL and semiconductor fundamentals.
+          I have experience in FPGA-based projects, digital system design, simulation
+          and hardware implementation. I am interested in Digital Electronics, RTL
+          Design and Verification and am seeking an entry-level opportunity in the
+          semiconductor and VLSI domain.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-title">
+        <h2>Technical Skills</h2>
+        <p>Tools and technologies from my resume</p>
+      </div>
+      <div class="skills">
+        <div class="card skill">
+          <h3>Languages</h3>
+          <div class="chips">
+            <span class="chip">Basic C/C++</span>
+            <span class="chip">Verilog HDL</span>
+            <span class="chip">Basic SystemVerilog</span>
+          </div>
+        </div>
+        <div class="card skill">
+          <h3>Core Skills</h3>
+          <div class="chips">
+            <span class="chip">Digital Electronics</span>
+            <span class="chip">Digital Design</span>
+            <span class="chip">RTL Design</span>
+            <span class="chip">Verification</span>
+          </div>
+        </div>
+        <div class="card skill">
+          <h3>Tools</h3>
+          <div class="chips">
+            <span class="chip">Xilinx Vivado</span>
+            <span class="chip">EDA Playground</span>
+            <span class="chip">LTspice</span>
+            <span class="chip">FPGA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <p>Training and internship experience</p>
+      </div>
+      <div class="timeline">
+        <div class="card">
+          <h3>Lightweight Cryptography (LWC) — CSIR-CEERI, Pilani</h3>
+          <div class="meta">Jun 2026 – Jul 2026</div>
+          <p>
+            Worked on ASCON-128 Lightweight Cryptography, focusing on FPGA-based
+            implementation using Verilog HDL, RTL design, simulation and functional verification.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Advanced Digital Design using HDL — FUTUREWIZ, Noida</h3>
+          <div class="meta">Jun 2025 – Aug 2025</div>
+          <p>Exposure to Hardware Description Languages for digital circuits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Selected VLSI and FPGA projects</p>
+      </div>
+      <div class="projects">
+        <div class="card project">
+          <h3>ASCON-128 Lightweight Cryptography</h3>
+          <div class="tools">Verilog HDL • RTL • Simulation</div>
+          <ul>
+            <li>Designed and implemented ASCON-128 using Verilog HDL.</li>
+            <li>Worked on RTL design, simulation and functional verification.</li>
+          </ul>
+        </div>
+        <div class="card project">
+          <h3>Ultrasonic Distance Measurement using FPGA</h3>
+          <div class="tools">Vivado • Verilog • Sensor • LCD</div>
+          <ul>
+            <li>Designed an FPGA-based real-time distance measurement system.</li>
+            <li>Interfaced an ultrasonic sensor and LCD display.</li>
+            <li>Developed and tested Verilog with constraints and pin mapping.</li>
+          </ul>
+        </div>
+        <div class="card project">
+          <h3>Design & Verification of 4-bit ALU</h3>
+          <div class="tools">Verilog HDL • RTL Simulation</div>
+          <ul>
+            <li>Designed and verified a 4-bit ALU supporting arithmetic and logical operations.</li>
+            <li>Performed RTL simulation and explored frontend VLSI design flow.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>Academic background</p>
+      </div>
+      <div class="edu-grid">
+        <div class="card edu-card">
+          <h3>B.Tech in Electronics & Communication Engineering (VLSI)</h3>
+          <p><strong>BKBIET, Pilani</strong></p>
+          <p>Jan 2023 – Present</p>
+          <p><strong>CGPA: 8.84</strong></p>
+        </div>
+        <div class="card edu-card">
+          <h3>Class XII (RBSE)</h3>
+          <p>Bal Niketan Senior Secondary School, Pilani</p>
+          <p>Apr 2021 – May 2022</p>
+        </div>
+        <div class="card edu-card">
+          <h3>Class X (RBSE)</h3>
+          <p>Bal Niketan Senior Secondary School, Pilani</p>
+          <p>Apr 2019 – May 2020</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <div class="section-title">
+        <h2>Certifications</h2>
+        <p>Courses and training</p>
+      </div>
+      <div class="cert-grid">
+        <div class="card cert-card"><p>NPTEL Online Certification in System Design Through Verilog — IIT Guwahati (8 week)</p></div>
+        <div class="card cert-card"><p>NPTEL Online Certification in CMOS Digital VLSI Design — IIT Roorkee (8 week)</p></div>
+        <div class="card cert-card"><p>Online training in VLSI Design — Internshala Trainings (8 weeks)</p></div>
+        <div class="card cert-card"><p>45-days Summer Internship Certification in Digital System Design Verilog HDL — FUTUREWIZ, Noida</p></div>
+        <div class="card cert-card"><p>45-days Summer Internship Certification in Cryptography Cyber Security — CSIR-CEERI, Pilani</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Let's Connect</h2>
+        <p>Open to entry-level opportunities in VLSI, RTL Design and Verification</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <small>Phone</small>
+          <a href="tel:+917023629110">+91 7023629110</a>
+        </div>
+        <div class="contact-card">
+          <small>Email</small>
+          <a href="mailto:yogeshsaini1523@gmail.com">yogeshsaini1523@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <small>LinkedIn</small>
+          <a href="#" onclick="return false;">Add your LinkedIn URL</a>
+        </div>
+        <div class="contact-card">
+          <small>GitHub</small>
+          <a href="#" onclick="return false;">Add your GitHub URL</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Yogesh Saini • VLSI / RTL Design / Verification Portfolio
+</footer>
+
+</body>
+</html>
